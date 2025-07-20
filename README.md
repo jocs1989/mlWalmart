@@ -207,9 +207,51 @@ cd src
 bash run.bash
 
 ```
+
+
 ### Report on the Quality of Data Cleaning Process
-View the report quality [link](./reports/data_profile.html)
-### make inference
+View in the navegator the report quality [link](./reports/data_profile.html)
+
+
+### Featur selection
+The data was sorted temporally by the datetime column to ensure consistency in the analysis. Then, we calculated the rolling mean and standard deviation with a 3-hour window for the telemetry columns (volt, rotate, pressure, vibration). If there weren't enough data points to fill the window, we ensured the calculation using the available values. Missing values were replaced with zero. The model column was converted into a numeric categorical variable, and the dates were homogenized. Additionally, we excluded identification columns (IDs) and unused labels. Finally, the target variable was defined as failure_in_next_24h.
+
+
+### metrics 
+# 1. Accuracy = 0.9804
+**What does it mean?**: Accuracy measures the proportion of correct predictions made by the model out of the total predictions. In this case, the model has an accuracy of 98.04%, meaning it correctly predicted 98.04% of the total cases.
+
+However, a high accuracy isn't always enough to evaluate a model, especially when there’s a class imbalance (for example, when one class is much less frequent than the other).
+
+---
+
+# 2. F1 Score = 0.0149
+**What does it mean?**: The F1 Score combines both **precision** and **recall** into a single metric, providing a balance between the two. It’s particularly useful when classes are imbalanced.
+
+- **Precision**: How many of the predicted positives were actually correct.
+- **Recall**: How many of the actual positives were correctly identified by the model.
+
+The F1 Score is the harmonic mean between precision and recall. An F1 Score of 0.0149 indicates that the model performs very poorly at correctly identifying the positive class, despite having a high accuracy.
+
+---
+
+### Why is the accuracy high, but the F1 Score so low?
+This often happens when the dataset is imbalanced. For example, if there are many more instances of a negative class than a positive one (which is common in binary classification problems), the model can predict the majority class (in this case, the negative class) and still achieve a high accuracy.
+
+- **High Accuracy**: The model predicts correctly many times just by predicting the majority class.
+- **Low F1 Score**: The model performs very poorly at identifying the positive class, as it is not correctly predicting the positive instances.
+
+
+### 
+The model is deploy in the docker hub in my repository [link](https://hub.docker.com/r/jocz/ml-jobs/tags)
+```bash
+docker pull jocz/ml-jobs:ml-prueba-tecnica-wlm
+
+```
+This container is compatible with any cloud and kserver or sheldon.
+
+
+### Make inference
 ```bash
 curl --location 'http://127.0.0.1:5001/invocations' \
 --header 'Content-Type: application/json' \
