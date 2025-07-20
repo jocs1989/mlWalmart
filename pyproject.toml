@@ -1,0 +1,22 @@
+[project]
+name = "ml-almart"
+version = "0.1.0"
+description = "ML Engineering Technical Challenge}"
+authors = [
+    {name = "jocs",email = "iqi.zamora@hotmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas (>=2.3.1,<3.0.0)",
+    "cookiecutter (>=2.6.0,<3.0.0)",
+    "kagglehub (>=0.3.12,<0.4.0)",
+    "mlflow (>=3.1.1,<4.0.0)",
+    "docker (>=7.1.0,<8.0.0)",
+    "kfp (>=2.13.0,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

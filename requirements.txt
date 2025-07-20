@@ -1,0 +1,7 @@
+# Lista de dependencias
+dask
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn

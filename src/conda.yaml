@@ -1,0 +1,15 @@
+name: mlflow-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10                  # Cambiado de 3.11 a 3.10 para compatibilidad total
+  - pip<=25.1.1
+  - pip
+  - pandas>=1.5.0
+  - numpy<=1.26.4               # Limitado para ser compatible con numba
+  - matplotlib
+  - scikit-learn==1.3.2          # Compatibilidad con otras bibliotecas
+  - ydata-profiling==4.6.5       # Compatible con Python 3.10 y numpy<=1.26
+  - pip:
+      - mlflow==3.1.1            # Versión compatible de mlflow
+      - kagglehub                # Agregado para la integración de Kaggle
