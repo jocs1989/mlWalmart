@@ -207,7 +207,8 @@ cd src
 bash run.bash
 
 ```
-
+### Report on the Quality of Data Cleaning Process
+View the report quality [link](./reports/data_profile.html)
 ### make inference
 ```bash
 curl --location 'http://127.0.0.1:5001/invocations' \
