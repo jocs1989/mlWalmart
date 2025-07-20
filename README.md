@@ -191,7 +191,7 @@ Docker Compose is a tool to define and run multi-container Docker applications. 
 
 ```bash
 
-   git clone https://github.com/user/repository-name.git
+   git clone git@github.com:jocs1989/mlWalmart.git
 
 ```
 
